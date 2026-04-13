@@ -23,8 +23,8 @@ if os.path.exists(BOOKS_FILE):
     with open(BOOKS_FILE, "r") as f:
         BOOKS = json.load(f)
 
-app = FastAPI()
-handler = Mangum(app)
+app = FastAPI(root_path="/default")
+handler = Mangum(app, api_gateway_base_path="/default")
 
 
 @app.get("/")
